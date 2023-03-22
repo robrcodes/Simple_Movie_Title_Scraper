@@ -1,7 +1,5 @@
 from bs4 import BeautifulSoup as bs
 import requests
-import lxml
-import random
 import time
 
 # website to be scraped
@@ -42,7 +40,15 @@ for page in range(1, int(last_page)+1):  # 1 to last page
     # feedback while running to display progress
     print(f'Scraping page number: {page}')
 
-    # time delay between page requests in seconds
-    page_delay = random.randint(1, 3)
-    time.sleep(page_delay)
+    # time delay between page requests for 1 second
+    time.sleep(1)
 
+    # append each scraped title to the list
+    for name in titles:
+        movie_list.append(name.text)
+
+# print complete list of movie titles scraped
+title_count = 1
+for movie_title in movie_list:
+    print(title_count, movie_title)
+    title_count += 1
