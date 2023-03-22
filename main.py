@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup as bs
 import requests
 import lxml
+import random
+import time
 
 # website to be scraped
 root = 'https://www.scripts.com'
@@ -40,4 +42,7 @@ for page in range(1, int(last_page)+1):  # 1 to last page
     # feedback while running to display progress
     print(f'Scraping page number: {page}')
 
-    
+    # time delay between page requests in seconds
+    page_delay = random.randint(1, 3)
+    time.sleep(page_delay)
+
