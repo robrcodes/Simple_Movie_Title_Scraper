@@ -11,3 +11,11 @@ content = result.text
 # parse the html
 soup = bs(content, 'lxml')
 
+# Pagination
+#
+pagination = soup.find('div', class_='pager')
+pages = pagination.find_all('a', class_='rc5')
+
+# pages[-2]  # last useful element that we need
+last_page = pages[-2].text
+print(f'Total pages to scrape: {last_page}')
